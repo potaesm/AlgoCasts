@@ -102,6 +102,4 @@ function chunk(array, size) {
     return chunkedArr;
 }
 
-console.log(chunk([1, 2, 3, 4, 5], 0));
-
 module.exports = chunk;
