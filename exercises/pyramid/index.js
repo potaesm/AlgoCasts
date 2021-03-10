@@ -32,4 +32,6 @@ function pyramid(n, row = 0, stack = '') {
     }
 }
 
+pyramid(3);
+
 module.exports = pyramid;
