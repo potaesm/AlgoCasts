@@ -45,21 +45,43 @@ class LinkedList {
         }
         this.head = this.head.next;
     }
-    removeLast(previousNode = null, node = this.head) {
-        if (!node) {
+    removeLast(prevNode = null, currentNode = this.head) {
+        if (!currentNode) {
             this.head = null;
             return;
         }
-        if (!node.next) {
-            if (!previousNode) {
+        if (!currentNode.next) {
+            if (!!prevNode) {
+                prevNode.next = null;
+                return;
+            } else {
                 this.head = null;
                 return;
             }
-            previousNode.next = null;
-            this.head = previousNode;
+        }
+        this.removeLast(currentNode, currentNode.next);
+    }
+    insertLast(data, node = this.head) {
+        if (!node) {
+            this.head = new Node(data);
             return;
         }
-        this.removeLast(node, node.next);
+        if (!node.next) {
+            node.next = new Node(data);
+            return;
+        } else {
+            this.insertLast(data, node.next);
+        }
+    }
+    getAt(index, node = this.head, counter = 0) {
+        if (!node) {
+            return null;
+        }
+        if (counter === index) {
+            return node;
+        }
+        counter++;
+        return this.getAt(index, node.next, counter);
     }
 }
 
