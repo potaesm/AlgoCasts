@@ -27,11 +27,37 @@ class Tree {
     constructor() {
         this.root = null;
     }
-    traverseBF() {
-
+    // traverseBF(fn, bufferArr = [this.root]) {
+    //     const node = bufferArr.shift();
+    //     if (!!node) {
+    //         fn(node);
+    //         bufferArr.push(...node.children);
+    //         this.traverseBF(fn, bufferArr);
+    //     }
+    // }
+    traverseBF(fn) {
+        let bufferArr = [this.root];
+        while (!!bufferArr.length) {
+            const node = bufferArr.shift();
+            fn(node);
+            bufferArr.push(...node.children);
+        }
     }
-    traverseDF() {
-        
+    // traverseDF(fn, bufferArr = [this.root]) {
+    //     const node = bufferArr.shift();
+    //     if (!!node) {
+    //         fn(node);
+    //         bufferArr.unshift(...node.children);
+    //         this.traverseDF(fn, bufferArr);
+    //     }
+    // }
+    traverseDF(fn) {
+        let bufferArr = [this.root];
+        while (!!bufferArr.length) {
+            const node = bufferArr.shift();
+            fn(node);
+            bufferArr.unshift(...node.children);
+        }
     }
 }
 
