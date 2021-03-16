@@ -41,6 +41,32 @@ class Node {
             return;
         }
     }
+    // contains(data, currentNode = this) {
+    //     if (!!currentNode) {
+    //         if (currentNode.data === data) {
+    //             return currentNode;
+    //         }
+    //         if (currentNode.data < data) {
+    //             return this.contains(data, currentNode.right);
+    //         }
+    //         if (currentNode.data > data) {
+    //             return this.contains(data, currentNode.left);
+    //         }
+    //     }
+    //     return null;
+    // }
+    contains(data) {
+        if (this.data === data) {
+            return this;
+        }
+        if (this.data < data && !!this.right) {
+            return this.right.contains(data);
+        }
+        if (this.data > data && !!this.left) {
+            return this.left.contains(data);
+        }
+        return null;
+    }
 }
 
 module.exports = Node;
